@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ray
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ray
+  template:
+    metadata:
+      labels:
+        app: ray
+    spec:
+      containers:
+      - image: okteto.dev/ray:latest
+        name: ray
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/FitApp-html.zip"
+        - name: Vless_UUID
+          value: "/f63bdea0-fe73-4c8d-93a8-fcdb1ae80852"
+        - name: Vless_Path
+          value: "/f63bdea0-fe73-4c8d-93a8-fcdb1ae80852-vless"
+        - name: Vmess_UUID
+          value: "f63bdea0-fe73-4c8d-93a8-fcdb1ae80852"
+        - name: Vmess_Path
+          value: "/f63bdea0-fe73-4c8d-93a8-fcdb1ae80852-vmess"
+        - name: Share_Path
+          value: "/v2link"
